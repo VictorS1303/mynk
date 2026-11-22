@@ -20,14 +20,15 @@ export const button = tv({
       success: "bg-success text-success-foreground hover:bg-success/90 focus-visible:ring-success/50",
       warning: "bg-warning text-warning-foreground hover:bg-warning/90 focus-visible:ring-warning/50",
       error: "bg-error text-error-foreground hover:bg-error/90 focus-visible:ring-error/50",
-      hero_button: 'bg-transparent text-white uppercase w-fit rounded-none p-0 m-0 text-shadow-md hover:border-b-1 hover:border-white'
+      hero_button: 'bg-transparent text-white uppercase w-fit rounded-none p-0 m-0 text-shadow-md hover:border-b-1 hover:border-white',
+      users_overview_button: 'uppercase text-white text-shadow-md tracking-wider bg-transparent w-fit h-fit p-0 px-0 m-0 hover:bg-transparent',
     },
     size: {
       sm: "h-9 px-4 text-sm has-[>svg]:px-3 [&_svg:not([class*='size-'])]:size-3.5",
       md: "h-11 px-5 text-base has-[>svg]:px-4 [&_svg:not([class*='size-'])]:size-4.5",
       lg: "h-12 px-8 text-lg has-[>svg]:px-6 [&_svg:not([class*='size-'])]:size-5",
       xl: "h-14 px-10 text-xl has-[>svg]:px-8 [&_svg:not([class*='size-'])]:size-6",
-      "2xl": "h-16 px-12 text-2xl has-[>svg]:px-10 [&_svg:not([class*='size-'])]:size-7",
+      "2xl": "text-2xl has-[>svg]:px-10 [&_svg:not([class*='size-'])]:size-7",
       "3xl": "text-3xl has-[>svg]:px-12 [&_svg:not([class*='size-'])]:size-8 data-[slot=button]:",
 
       "icon-sm": "size-9 [&_svg:not([class*='size-'])]:size-3.5",

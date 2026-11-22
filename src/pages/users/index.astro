@@ -1,0 +1,30 @@
+---
+import Section from "@/components/sections/Section.astro"
+import Layout from "../../layouts/Layout.astro"
+import Heading from "@/components/headings/Heading.astro"
+import UsersContainer from "@/components/containers/UsersContainer.astro"
+
+const usersOverviewButtons = [
+  {
+    id: "1",
+    user: "toadfingers",
+    username: "Toadfingers",
+  },
+  {
+    id: "2",
+    user: "fennec",
+    username: "Fennec",
+  },
+]
+---
+
+<Layout title="Users">
+  <Section class="grid place-content-start place-items-start">
+    <div class="flex flex-col gap-4">
+      <Heading size="4xl" class="mt-8 text-white text-shadow-md uppercase">
+        Users
+      </Heading>
+      <UsersContainer usersOverviewButtons={usersOverviewButtons} />
+    </div>
+  </Section>
+</Layout>

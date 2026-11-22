@@ -1,0 +1,36 @@
+---
+import Paragraph from "../paragraphs/Paragraph.astro"
+import Button from "../starwind/button/Button.astro"
+
+import type { UserOverviewContainerProps } from "@/types/containers"
+
+const {
+  class: className,
+  id,
+  usersOverviewButtons = [],
+  ...rest
+} = Astro.props as UserOverviewContainerProps
+---
+
+<div
+  class:list={["h-fit w-fit flex flex-wrap gap-8 md:gap-20", className]}
+  id={id}
+  {...rest}
+>
+  {usersOverviewButtons.length > 0 ? (
+    usersOverviewButtons.map((user) => (
+      <Button
+        as="a"
+        size="2xl"
+        variant="users_overview_button"
+        href={`/users/${user.username.toLowerCase()}`}
+      >
+        {user.username}
+      </Button>
+    ))
+  ) : (
+    <Paragraph size="2xl" class="text-white uppercase text-shadow-md">
+      No users
+    </Paragraph>
+  )}
+</div>
