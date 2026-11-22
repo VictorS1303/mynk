@@ -1,0 +1,116 @@
+---
+const cloudNames = [
+  "one",
+  "two",
+  "three",
+  "four",
+  "five",
+  "six",
+  "seven",
+  "eight",
+  "nine",
+  "ten",
+  "eleven",
+  "twelve",
+]
+---
+
+<div class="clouds-container fixed inset-0 h-screen w-screen overflow-hidden pointer-events-none -z-10"></div>
+
+<style is:global>
+  .cloud {
+    position: absolute;
+    animation-name: moveCloud;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes moveCloud {
+    0% {
+      transform: translateX(-100vw);
+    }
+
+    100% {
+      transform: translateX(100vw);
+    }
+  }
+</style>
+
+<script>
+  const cloudNames = [
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten",
+    "eleven",
+    "twelve",
+  ]
+  const concurrentClouds = 20
+  const minDuration = 15
+  const maxDuration = 40
+  const minWidth = 100
+  const maxWidth = 320
+
+  function randomCloudName(): string {
+    return cloudNames[Math.floor(Math.random() * cloudNames.length)]
+  }
+
+  function randomTop(): number {
+    return Math.random() * 70
+  }
+
+  function randomDuration(): number {
+    return minDuration + Math.random() * (maxDuration - minDuration)
+  }
+
+  function randomWidth(): number {
+    return minWidth + Math.random() * (maxWidth - minWidth)
+  }
+
+  function handleCloudFinished(event: Event): void {
+    const img = event.target as HTMLImageElement
+    const container = img.parentElement
+
+    img.remove()
+
+    if (container) {
+      spawnCloud(container, false)
+    }
+  }
+
+  function spawnCloud(container: HTMLElement, initial: boolean): void {
+    const duration = randomDuration()
+
+    const img = document.createElement("img")
+    // /src/assets/clouds/cloud_eight.svg
+    img.src = `src/assets/clouds/cloud_${randomCloudName()}.svg`
+    img.className = "cloud"
+    img.style.top = `${randomTop()}%`
+    img.style.width = `${randomWidth()}px`
+    img.style.animationDuration = `${duration}s`
+
+    // negative delay drops the cloud in mid-flight, so initial clouds
+    // appear scattered across the screen instead of stacked off-left
+    if (initial) {
+      img.style.animationDelay = `-${Math.random() * duration}s`
+    }
+
+    img.addEventListener("animationend", handleCloudFinished)
+
+    container.appendChild(img)
+  }
+
+  const container = document.querySelector<HTMLElement>(".clouds-container")
+
+  if (container) {
+    for (let i = 0; i < concurrentClouds; i++) {
+      spawnCloud(container, true)
+    }
+  }
+</script>

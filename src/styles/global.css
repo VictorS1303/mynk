@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+:root
+{
+  /* COLORS */
+  --primary-color: #fff;
+  --secondary-color: #111;
+  --tertiary-color: #FFE597;
+  --body-bg-color: #32adff;
+
+  scroll-behavior: smooth;
+
+}
+
+
+.soupbone-bold-195
+{
+  font-family: 'SoupBone Bold 195';
+}
+
+
+h1, h2, h3, h4, h5, h6
+{
+  font-family: 'BubbleGum 402', sans-serif;
+}
