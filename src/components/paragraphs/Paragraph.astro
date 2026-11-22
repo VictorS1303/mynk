@@ -1,0 +1,39 @@
+---
+import type { ParagraphProps } from "@/interfaces/paragraph"
+import "../../styles/starwind.css"
+
+const {
+  size = "base",
+  class: className,
+  id,
+  ...rest
+} = Astro.props as ParagraphProps
+
+const sizes: Record<NonNullable<ParagraphProps["size"]>, string> = {
+  xs: "text-xs md:text-xs",
+  sm: "text-sm md:text-sm",
+  base: "text-base md:text-lg",
+  lg: "text-lg md:text-xl",
+  xl: "text-xl md:text-2xl",
+  "2xl": "text-xl md:text-3xl",
+  "3xl": "text-xl md:text-4xl",
+}
+
+const variants = {
+  body: "font-(--font-soupbone-bold-219) text-white",
+  hero: "block text-white mt-2",
+  lead: "font-medium text-gray-700",
+  small: "text-sm text-gray-600",
+  muted: "text-gray-500",
+}
+
+const { variant } = Astro.props
+---
+
+<p
+  class={`${sizes[size]} ${className ?? ""} ${variants[variant] ?? ""}`}
+  id={id}
+  {...rest}
+>
+  <slot />
+</p>

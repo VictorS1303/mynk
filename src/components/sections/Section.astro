@@ -1,0 +1,29 @@
+---
+const {
+  class: className,
+  id,
+  variant = "default",
+} = Astro.props
+
+const variants = {
+  default: "relative h-screen w-screen",
+  hero: "relative h-[100vh]",
+  sub: "relative h-fit",
+  dashboard_hero: "h-fit",
+  dashboard_section: "h-fit",
+  form_section:
+    "relative min-h-dvh flex items-center justify-center py-22 px-4",
+
+  overview_section: "grid place-content-center h-screen",
+  topic_section: "grid place-content-center h-screen",
+}
+
+const paddingClass = variant === "hero" ? "" : "px-60 py-12"
+---
+
+<section
+  class={`relative ${paddingClass} ${className} ${variants[variant]}`}
+  id={id}
+>
+  <slot />
+</section>
