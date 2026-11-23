@@ -22,6 +22,7 @@ export const button = tv({
       error: "bg-error text-error-foreground hover:bg-error/90 focus-visible:ring-error/50",
       hero_button: 'bg-transparent text-white uppercase w-fit rounded-none p-0 m-0 text-shadow-md hover:border-b-1 hover:border-white',
       users_overview_button: 'uppercase text-white text-shadow-md tracking-wider bg-transparent w-fit h-fit p-0 px-0 m-0 hover:bg-transparent',
+      game_and_levels_overview_button: 'flex flex-col gap-1 p-0 m-0 h-fit w-fit bg-transparent hover:bg-transparent'
     },
     size: {
       sm: "h-9 px-4 text-sm has-[>svg]:px-3 [&_svg:not([class*='size-'])]:size-3.5",

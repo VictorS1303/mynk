@@ -1,0 +1,19 @@
+---
+import { users } from "@/lib/utils/dummy_data/users/users"
+import { games } from "@/lib/utils/dummy_data/games/games"
+
+export function getStaticPaths()
+{
+  return users.map((user) => ({
+    params: {
+      user: user.username,
+    },
+    props: {
+      user,
+      games: games.filter((game) => game.user_id === user.id),
+    },
+  }))
+}
+
+const { user, games: userGames } = Astro.props
+---

@@ -12,6 +12,12 @@
       "version": "3.0.3",
       "framework": "astro",
       "registry": "default"
+    },
+    {
+      "name": "card",
+      "version": "2.3.2",
+      "framework": "astro",
+      "registry": "default"
     }
   ],
   "tailwind": {
