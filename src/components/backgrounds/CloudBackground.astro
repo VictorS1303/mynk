@@ -88,8 +88,7 @@ const cloudNames = [
     const duration = randomDuration()
 
     const img = document.createElement("img")
-    // /src/assets/clouds/cloud_eight.svg
-    img.src = `src/assets/clouds/cloud_${randomCloudName()}.svg`
+    img.src = `/clouds/cloud_${randomCloudName()}.svg`
     img.className = "cloud"
     img.style.top = `${randomTop()}%`
     img.style.width = `${randomWidth()}px`

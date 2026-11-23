@@ -12,6 +12,12 @@
       "version": "3.0.3",
       "framework": "astro",
       "registry": "default"
+    },
+    {
+      "name": "image",
+      "version": "1.1.0",
+      "framework": "astro",
+      "registry": "default"
     }
   ],
   "tailwind": {

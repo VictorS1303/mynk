@@ -1,4 +1,4 @@
-import type { ParagraphSizes } from '@/types/paragraphs'
+import type { ParagraphSizes } from '@/lib/utils/types/paragraphs'
 
 export interface ParagraphProps 
 {

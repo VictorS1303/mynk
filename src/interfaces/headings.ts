@@ -1,4 +1,4 @@
-import type { HeadingSize, HeadingTag } from "@/types/headings"
+import type { HeadingSize, HeadingTag } from "@/lib/utils/types/headings"
 
 export interface HeadingProps 
 {

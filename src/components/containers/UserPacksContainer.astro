@@ -1,0 +1,30 @@
+---
+import type { UserPacksOverviewContainerProps } from "@/lib/utils/types/containers"
+import Button from "../starwind/button/Button.astro"
+import Image from "../starwind/image/Image.astro"
+
+const { username, games } = Astro.props as UserPacksOverviewContainerProps
+
+
+---
+
+<div class="flex gap-30">
+  {games.map((game, index) => (
+    <Button
+      as="a"
+      class="flex flex-col gap-1 p-0 m-0 h-fit w-fit bg-transparent hover:bg-transparent group-hover"
+      href={`/${username}/${game.pack_slug}`}
+    >
+      <Image
+        src={game.pack_thumbnail}
+        alt={game.pack_thumbnail_alt}
+        height={100}
+        width={100}
+        class="shadow-md h-[150px] rounded-md object-cover hover:scale-1.2"
+      />
+      <span class="self-start text-shadow-md text-lg">
+        {index + 1}. {game.pack_name}
+      </span>
+    </Button>
+  ))}
+</div>
