@@ -1,0 +1,34 @@
+---
+import { users } from "@/lib/utils/dummy_data/users/users"
+import { games } from "@/lib/utils/dummy_data/games/games"
+import { levels } from "@/lib/utils/dummy_data/levels/levels"
+
+export function getStaticPaths() {
+  return users.flatMap((user) =>
+    games
+      .filter((game) => game.user_id === user.id)
+      .flatMap((game) =>
+        levels
+          .filter((level) => level.game_id === game.id)
+          .map((level) => ({
+            params: {
+              user: user.username,
+              game: game.game_slug,
+              level: level.level_slug,
+            },
+            props: {
+              user,
+              game,
+              level,
+            },
+          })),
+      ),
+  )
+}
+
+const { user, game, level } = Astro.props
+---
+
+<h1>{level.level_name}</h1>
+<p>Level {level.level_number}</p>
+<p>Created by {user.username}</p>

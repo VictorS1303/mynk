@@ -1,9 +1,12 @@
 ---
 import { users } from "@/lib/utils/dummy_data/users/users"
 import { games } from "@/lib/utils/dummy_data/games/games"
+import UserPacksPageLayout from "@/layouts/UserPacksPageLayout.astro"
+import Heading from "@/components/headings/Heading.astro"
+import Section from "@/components/sections/Section.astro"
+import UserPacksContainer from "@/components/containers/UserPacksContainer.astro"
 
-export function getStaticPaths()
-{
+export function getStaticPaths() {
   return users.map((user) => ({
     params: {
       user: user.username,
@@ -17,3 +20,13 @@ export function getStaticPaths()
 
 const { user, games: userGames } = Astro.props
 ---
+
+<UserPacksPageLayout title={`Packs by ${user.username}`}>
+  <Section class="grid place-content-start place-items-start">
+    <Heading size="3xl" class="text-white">
+      {user.username}
+    </Heading>
+
+    <UserPacksContainer username={user.username} games={userGames} />
+  </Section>
+</UserPacksPageLayout>

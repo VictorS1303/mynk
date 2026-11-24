@@ -1,0 +1,48 @@
+---
+import { users } from "@/lib/utils/dummy_data/users/users"
+import { games } from "@/lib/utils/dummy_data/games/games"
+import { levels } from "@/lib/utils/dummy_data/levels/levels"
+
+export function getStaticPaths() {
+  return users.flatMap((user) =>
+    games
+      .filter((game) => game.user_id === user.id)
+      .map((game) => ({
+        params: {
+          user: user.username,
+          game: game.pack_slug,
+        },
+        props: {
+          user,
+          game,
+          levels: levels.filter((level) => level.game_id === game.id),
+        },
+      })),
+  )
+}
+
+const { user, game, levels: gameLevels } = Astro.props
+---
+
+<p>{user.username}</p>
+<p>{game.pack_name}</p>
+
+<div class="flex gap-30">
+  {gameLevels.map((level) => (
+    <a
+      class="flex flex-col gap-1"
+      href={`/users/${user.username}/${game.pack_slug}/${level.level_slug}`}
+    >
+      <img
+        src={level.level_thumbnail}
+        alt={level.level_thumbnail_alt}
+        width="100"
+        height="100"
+      />
+
+      <span>
+        {level.level_number}. {level.level_name}
+      </span>
+    </a>
+  ))}
+</div>
