@@ -9,11 +9,11 @@ export function getStaticPaths() {
       .filter((game) => game.user_id === user.id)
       .flatMap((game) =>
         levels
-          .filter((level) => level.game_id === game.id)
+          .filter((level) => level.game_id === String(game.id))
           .map((level) => ({
             params: {
               user: user.username,
-              game: game.game_slug,
+              game: game.pack_slug,
               level: level.level_slug,
             },
             props: {
@@ -30,5 +30,3 @@ const { user, game, level } = Astro.props
 ---
 
 <h1>{level.level_name}</h1>
-<p>Level {level.level_number}</p>
-<p>Created by {user.username}</p>

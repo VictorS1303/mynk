@@ -1,0 +1,28 @@
+---
+import type { PackLevelsContainerProps } from "@/lib/utils/types/containers"
+import Button from "../starwind/button/Button.astro"
+import Image from "../starwind/image/Image.astro"
+
+const { username, game, levels } = Astro.props as PackLevelsContainerProps
+---
+
+<div class="flex gap-30 flex-wrap min-w-[80vw] w-full h-[60vh] overflow-x-scroll">
+  {levels.map((level, index) => (
+    <Button
+      as="a"
+      class="flex flex-col gap-1 p-0 m-0 h-fit w-[200px] bg-transparent hover:bg-transparent group-hover"
+      href={`/users/${username}/${game.pack_slug}/${level.level_slug}`}
+    >
+      <Image
+        src={level.level_thumbnail}
+        alt={level.level_thumbnail_alt}
+        height={100}
+        width={100}
+        class="shadow-md h-[150px] rounded-md object-cover hover:scale-1.2"
+      />
+      <span class="self-start text-shadow-md text-lg">
+        {level.level_number}. {level.level_name}
+      </span>
+    </Button>
+  ))}
+</div>
